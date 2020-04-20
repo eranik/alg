@@ -5,7 +5,7 @@ import "fmt"
 func main() {
 	a := []int{0, 1, 2, 3, 4, 5, 6, 7}
 	r := twoSum(a, 11)
-	fmt.Println(r[0], r[1]) // 5 6
+	fmt.Println(r) // [5 6]
 }
 
 // Given an array of integers, return indices of the two numbers
@@ -15,13 +15,12 @@ func main() {
 func twoSum(a []int, target int) [2]int {
 	m := map[int]int{}
 	// R: O(n)
-	for i := range a {
-		n := a[i]
+	for i, n := range a {
 		key := target - n
-		if v, ok := m[key]; ok {
-			return [2]int{v, i}
+		if j, ok := m[key]; ok {
+			return [2]int{j, i}
 		}
 		m[n] = i
 	}
-	panic("No two sum solution")
+	panic("No solution")
 }
