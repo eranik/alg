@@ -20,6 +20,28 @@ func main() {
 	show(b) // 5 -> 6 -> 4
 	c := addTwoNumbers(a, b)
 	show(c) // 7 -> 0 -> 8
+	fmt.Println()
+
+	a.Remove(a.Back())
+	show(a) // 2 -> 4
+	show(b) // 5 -> 6 -> 4
+	c = addTwoNumbers(a, b)
+	show(c) // 7 -> 0 -> 5
+	fmt.Println()
+
+	a.Remove(a.Front())
+	show(a) // 4
+	show(b) // 5 -> 6 -> 4
+	c = addTwoNumbers(a, b)
+	show(c) // 9 -> 6 -> 4
+	fmt.Println()
+
+	a.Remove(a.Front())
+	show(a) //
+	show(b) // 5 -> 6 -> 4
+	c = addTwoNumbers(a, b)
+	show(c) // 5 -> 6 -> 4
+	fmt.Println()
 }
 
 // Add Two Numbers - LeetCode.
@@ -40,7 +62,8 @@ func addTwoNumbers(list1, list2 *list.List) *list.List {
 	b := list2.Front()
 	carry := 0
 	for a != nil || b != nil {
-		av, bv := 0, 0
+		av := 0
+		bv := 0
 		if a != nil {
 			av, _ = a.Value.(int)
 			a = a.Next()
